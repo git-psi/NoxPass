@@ -6,8 +6,6 @@ This little guide takes about five minutes to read. It covers everything you nee
 buttons work, how to choose a PIN (and why you must not forget it), how to type a password on your
 computer, and how to manage everything comfortably from your phone or PC.
 
-Keep the stick **horizontal, with the side button (B) on top**, like in the pictures.
-
 ---
 
 ## 1. The two buttons
