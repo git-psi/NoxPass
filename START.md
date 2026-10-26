@@ -20,9 +20,30 @@ You only have two buttons, and the whole app is built around them.
 | **B** held a moment | go back to the previous screen, or delete |
 | **A + B** together | validate (the same as holding A on most screens) |
 
-"long press" is just a bit under half a second. You will get the feel for it very quickly.
+A "long press" is just a bit under half a second. You will get the feel for it very quickly.
 
 Every screen follows this idea. If you ever feel lost: **hold B** to go back.
+
+### The third button: power
+
+Besides A and B, the stick has a small **power button** on its side. It is not used to navigate: it is
+only there to switch the stick on and off.
+
+- **Switch on**: press the power button.
+- **Switch off**: **double click** the power button, at any time. The owl falls asleep and the stick
+  shuts down.
+
+### Switching off
+
+You can switch the stick off in several ways:
+
+- **Double click the power button**, from any screen.
+- Choose **Quit** in the menu, or **hold B** in the menu.
+- **Keep holding B** for about three seconds, from anywhere.
+- Unplug the USB cable, if **Off on unplug** is enabled in the settings.
+- Do nothing on the PIN screen for about ten seconds.
+
+When the stick switches off, the vault is locked. Your PIN is asked again the next time.
 
 ---
 
@@ -58,13 +79,15 @@ Write it down somewhere safe, or pick something you will remember.
 ## 3. Unlocking
 
 Each time you switch the stick on, type your PIN the same way, then validate with **A + B**.
+
 > Wrong PIN? You get a short message and you can simply try again.
+
 ---
 
 ## 4. Moving around
 
 After the PIN you land on your **list of passwords**. The most recently used ones are at the top, and
-the first line is always **"+ Add Password"**.
+the first line is always **+ Add Password**.
 
 - **A**: go down
 - **B**: go up
@@ -73,7 +96,7 @@ the first line is always **"+ Add Password"**.
 
 ### The menu
 
-A row of squares: **"P"**assword, **"B"**ridge, **"S"**ettings, **"Q"**uit.
+A row of squares: **P**assword, **B**ridge, **S**ettings, **Q**uit.
 
 - **A** / **B**: move between them
 - **Hold A**: open the one that is selected
@@ -107,18 +130,18 @@ AZERTY and QWERTY in the settings: it has to match the keyboard of the computer 
 
 ## 6. Adding a password from the stick
 
-Choose **"+ Add Password"** in the list. It asks, in order, for a **Title**, a **Username/Email**, and
+Choose **+ Add Password** in the list. It asks, in order, for a **Title**, a **Username/Email**, and
 the **Password size**. The password itself is generated for you, random and strong.
 
 For the title and the username, you pick characters one by one with **A** and **B**, **hold A** to add
 the character and **hold B** to erase one. **A + B** validates the step.
 
-- If you saved username or email presets on the website (see below), they are offered first when you start the username/email.
+- If you saved username or email presets on the website (see below), they are offered first when you start the username or email.
 - Validate an empty text with **A + B** and the stick gives it a temporary name (ex: `Temp123`). You can
   rename it later from the website.
 - For the size, **A** and **B** change the number, then **A + B** creates the password.
 
-Honestly, typing on two buttons is slow. It works, but the website is much more comfortable. (Or if you type on the stick, dont forget to use preset !)
+Honestly, typing on two buttons is slow. It works, but the website is much more comfortable. And if you do type on the stick, don't forget your presets: they save a lot of time!
 
 ---
 
@@ -169,10 +192,10 @@ At the bottom, **Change PIN** and **Reset stick**.
 
 ## 9. When something goes wrong
 
-- **Switching off**: choose *Quit* in the menu, hold B in the menu, or double click the side button.
+- **Switching off**: see "Switching off" in section 1.
 - **I forgot my PIN**: on the PIN screen, **hold A + B for 10 seconds**. A bar fills the screen. If you
-  hold until the end, **everything is erased**: all passwords and the PIN. If you release before, nothing happens. You can
-  also do it from *Settings*, with *Reset stick* (hold A for 3 seconds).
+  hold until the end, **everything is erased**: all passwords and the PIN. If you release before, nothing
+  happens. You can also do it from *Settings*, with *Reset stick* (hold A for 3 seconds).
 - **The computer does not see the keyboard**: use the USB port of the stick directly, and try another
   cable. Some cables only charge.
 
@@ -191,7 +214,6 @@ the passwords that really matter to you.
 
 Thank you for reading, and enjoy NoxPass! If something is unclear or broken, you can open an issue on
 the [GitHub page](https://github.com/git-psi/NoxPass).
-
 
 ---
 
