@@ -192,4 +192,9 @@ the passwords that really matter to you.
 Thank you for reading, and enjoy NoxPass! If something is unclear or broken, you can open an issue on
 the [GitHub page](https://github.com/git-psi/NoxPass).
 
-*Designed by me, coded by Claude and me, and fully reviewed by me.* 🦉
+
+---
+
+<p align="center">
+Designed by me, coded by Claude and me, and fully reviewed by me. 🦉
+</p>
