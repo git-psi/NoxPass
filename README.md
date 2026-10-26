@@ -7,7 +7,7 @@ the login or password for you, like a keyboard. Your secrets live encrypted on t
 it, unless you decide to manage them from your phone or PC through the stick's own Wi-Fi.
 
 <p align="center">
-<img src="Explication%20Projet/ImageRef/Liste.png" alt="NoxPass: password list" width="360">
+<img src="docs/device.jpg" alt="NoxPass running on an M5StickS3" width="640">
 </p>
 
 **New here? Read the [quick start guide](START.md).**
@@ -25,9 +25,17 @@ it, unless you decide to manage them from your phone or PC through the stick's o
   on the stick, they are offered first, then the characters. They are stored encrypted too.
 - **Entry types**: username / email, password, URL, card number, expiry, CVV, note, free text and
   secret.
-- **Settings**: 36 two-color themes, brightness, PIN visible or hidden, shuffled PIN wheel, auto-lock,
+- **Settings**: 19 two-color themes, brightness, PIN visible or hidden, shuffled PIN wheel, auto-lock,
   sort by recent use or alphabetically, power off when unplugged.
 - **Minimal look**: two colors, like a Flipper Zero screen. A small owl is the logo.
+
+### Themes
+
+The same screen, in six of the 19 themes.
+
+<p align="center">
+<img src="docs/themes.jpg" alt="Six of the NoxPass themes: Dark, Light, Matrix, Amber, Violet and Dusk" width="760">
+</p>
 
 ## Buttons
 
