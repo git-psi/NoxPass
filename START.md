@@ -20,8 +20,7 @@ You only have two buttons, and the whole app is built around them.
 | **B** held a moment | go back to the previous screen, or delete |
 | **A + B** together | validate (the same as holding A on most screens) |
 
-A "long press" is just a bit under half a second. You will get the feel for it very quickly.
-
+"long press" is just a bit under half a second. You will get the feel for it very quickly.
 Every screen follows this idea. If you ever feel lost: **hold B** to go back.
 
 ---
