@@ -129,6 +129,6 @@ MIT
 
 ---
 
-*<p align="center">
+<p align="center">
 Designed by me, coded by Claude and me, and fully reviewed by me. 🦉
-</p>*
+</p>
