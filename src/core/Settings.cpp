@@ -33,30 +33,21 @@ namespace {
     // Themes: a background color and foreground color (0xRRGGBB)
     struct ThemeDef { const char* key; const char* name; uint32_t bg, fg; };
     const ThemeDef THEMES[THEME_COUNT] = {
-        // classic
+        // Light and dark basics. Dark backgrounds are kept close to black: the screen has few shades.
         {"dark",     "Dark",     0x000000, 0xFFFFFF}, {"light",    "Light",    0xFFFFFF, 0x000000},
-        {"matrix",   "Matrix",   0x000702, 0x00FF41}, {"lime",     "Lime",     0x071A12, 0x7CFF6B},
-        {"ember",    "Ember",    0x140A0A, 0xFF453A}, {"amber",    "Amber",    0x171717, 0xFFB000},
-        {"paper",    "Paper",    0xE8E1D5, 0x20251F}, {"violet",   "Violet",   0x191522, 0xC77DFF},
-        {"dusk",     "Dusk",     0x101820, 0xF2AA4C}, {"ice",      "Ice",      0x07131C, 0xA8E6FF},
-        {"sand",     "Sand",     0xD8C3A5, 0x35291F}, {"graphite", "Graphite", 0x202020, 0xBDBDBD},
-        // inspired by apps and editors
-        {"discord",  "Discord",  0x36393F, 0x7289DA}, {"nord",     "Nord",     0x2E3440, 0x88C0D0},
-        {"dracula",  "Dracula",  0x282A36, 0xBD93F9}, {"tokyo",    "Tokyo",    0x1A1B26, 0x7AA2F7},
-        {"gruvbox",  "Gruvbox",  0x282828, 0xEBDBB2}, {"monokai",  "Monokai",  0x272822, 0xA6E22E},
-        {"solar",    "Solar",    0x002B36, 0x93A1A1},
-        // blues and greys
-        {"ocean",    "Ocean",    0x0B1F33, 0x4FC3F7}, {"midnight", "Midnight", 0x0A0A23, 0x8C9EFF},
-        {"slate",    "Slate",    0x263238, 0xCFD8DC}, {"steel",    "Steel",    0x1C1F24, 0x9FB4C7},
-        {"cyber",    "Cyber",    0x000E12, 0x00E5FF},
-        // bright colors
-        {"neon",     "Neon",     0x0A0014, 0xFF2BD6}, {"rose",     "Rose",     0x1F0F14, 0xFF6FA5},
-        {"sakura",   "Sakura",   0xF8E8EE, 0xB03060}, {"ruby",     "Ruby",     0x1A0000, 0xFF5252},
-        {"sunset",   "Sunset",   0x1A0F0F, 0xFF8A50}, {"gold",     "Gold",     0x141008, 0xFFD54F},
-        // natural tones
-        {"coffee",   "Coffee",   0x1E1410, 0xD7B899}, {"cream",    "Cream",    0xF5EFE0, 0x4A3B2A},
-        {"mint",     "Mint",     0x0F1F1A, 0x7CFFCB}, {"forest",   "Forest",   0x10200F, 0x8FD694},
-        {"terminal", "Terminal", 0x0C0C0C, 0x33FF33}, {"contrast", "Contrast", 0x000000, 0xFFFF00},
+        {"matrix",   "Matrix",   0x000702, 0x00FF41}, {"lime",     "Lime",     0x020A06, 0x7CFF6B},
+        {"amber",    "Amber",    0x0A0A0A, 0xFFB000}, {"paper",    "Paper",    0xE8E1D5, 0x20251F},
+        {"violet",   "Violet",   0x0A0710, 0xC77DFF}, {"dusk",     "Dusk",     0x05080C, 0xF2AA4C},
+        {"ice",      "Ice",      0x02070A, 0xA8E6FF}, {"sand",     "Sand",     0xD8C3A5, 0x35291F},
+        // Inspired by apps and editors
+        {"discord",  "Discord",  0x16181B, 0x7289DA}, {"nord",     "Nord",     0x161A22, 0x88C0D0},
+        {"midnight", "Midnight", 0x030310, 0x8C9EFF},
+        // Bright colors
+        {"neon",     "Neon",     0x050008, 0xFF2BD6}, {"sakura",   "Sakura",   0xF8E8EE, 0xB03060},
+        {"ruby",     "Ruby",     0x0A0000, 0xFF5252},
+        // Greens, and the high contrast one
+        {"mint",     "Mint",     0x040B08, 0x7CFFCB}, {"forest",   "Forest",   0x050C05, 0x8FD694},
+        {"canary",   "Canary",   0x000000, 0xFFFF00},
     };
 
     uint16_t rgb565(uint32_t c) {

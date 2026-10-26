@@ -181,8 +181,7 @@ void LoginScreen::drawGuide(M5Canvas& c) {
     c.fillSprite(TFT_WHITE);
     c.qrcode(Config::HELP_URL, 4, 11, 113);
 
-    const char* shown = Config::HELP_URL;                // Link shown without "https://", cut in lines of 10 characters
-    if (strncmp(shown, "https://", 8) == 0) shown += 8;
+    const char* shown = Config::HELP_SHOWN;              // Short link, cut in lines of 10 characters
     Fonts::apply(c);
     c.setTextDatum(middle_left);
     const int16_t x = 122;

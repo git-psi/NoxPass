@@ -11,7 +11,7 @@ namespace Config {
     constexpr int16_t  SCREEN_H        = 135;
 
     // ---- Buttons and durations --------------------------------------------------------------------
-    constexpr uint32_t LONG_PRESS_MS      = 600;    // Long press (A long = validate, B long = back)
+    constexpr uint32_t LONG_PRESS_MS      = 450;    // Long press (A long = validate, B long = back)
     constexpr uint32_t SHUTDOWN_HOLD_MS   = 3000;   // B held after a B long => power off
     constexpr uint32_t MESSAGE_MS         = 2000;   // How long an Info / Error message stays on screen
     constexpr uint32_t LOGIN_POWER_OFF_MS = 10000;  // Idle login screen: power off the stick
@@ -37,8 +37,10 @@ namespace Config {
     constexpr bool     POWER_KEY_ANIMATION = true;
 
     // ---- First launch -----------------------------------------------------------------------------
-    // User guide link: shown as a QR code on first launch. TO REPLACE with your real address.
-    constexpr const char* HELP_URL     = "https://example.com/noxpass";
+    // User guide: the QR code opens HELP_URL (START.md); HELP_SHOWN is the short text written next to it
+    // (3 lines of 10 characters on the stick screen).
+    constexpr const char* HELP_URL     = "https://github.com/git-psi/NoxPass/blob/main/START.md";
+    constexpr const char* HELP_SHOWN   = "github.com/git-psi/NoxPass";
 
     // ---- Bridge (Wi-Fi) ---------------------------------------------------------------------------
     constexpr uint8_t  WIFI_PASS_LEN   = 8;         // WPA2 requires 8 characters minimum

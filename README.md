@@ -10,6 +10,8 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 <img src="Explication%20Projet/ImageRef/Liste.png" alt="NoxPass: password list" width="360">
 </p>
 
+**New here? Read the [quick start guide](START.md).**
+
 ## What's inside
 
 - **Encrypted vault**: AES-256-GCM, with a random master key protected by a key derived from your PIN

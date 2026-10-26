@@ -19,7 +19,7 @@ namespace Settings {
     };
 
     // ---- Themes: ONE table (Settings.cpp), used by the stick Settings screen AND sent to the website.
-    constexpr uint8_t THEME_COUNT = 36;
+    constexpr uint8_t THEME_COUNT = 19;
     const char* themeKey(uint8_t i);          // "dark", "light", ... (nullptr if out of table)
     const char* themeName(uint8_t i);         // "Dark", "Light", ...
     uint32_t    themeBg(uint8_t i);           // 0xRRGGBB
