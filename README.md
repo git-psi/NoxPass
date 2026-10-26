@@ -29,7 +29,10 @@ it, unless you decide to manage them from your phone or PC through the stick's o
   sort by recent use or alphabetically, power off when unplugged.
 - **Minimal look**: two colors, like a Flipper Zero screen. A small owl is the logo.
 
-### Screens
+<details>
+<summary><b>Screenshots</b></summary>
+
+<br>
 
 <table>
 <tr>
@@ -40,15 +43,12 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 <td align="center"><img src="docs/entry.jpg" alt="Entry screen" width="420"><br><sub>An entry</sub></td>
 <td align="center"><img src="docs/bridge.jpg" alt="Bridge screen with Wi-Fi QR code" width="420"><br><sub>Bridge: Wi-Fi QR code</sub></td>
 </tr>
+<tr>
+<td align="center" colspan="2"><img src="docs/themes.jpg" alt="One M5Stick whose screen is cut into three NoxPass themes: Dark, Light and Dusk" width="420"><br><sub>Three of the 19 themes, on the same stick</sub></td>
+</tr>
 </table>
 
-### Themes
-
-Three of the 19 themes, on the same stick.
-
-<p align="center">
-<img src="docs/themes.jpg" alt="One M5Stick whose screen is cut into three NoxPass themes: Dark, Light and Dusk" width="760">
-</p>
+</details>
 
 ## Buttons
 
