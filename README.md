@@ -31,10 +31,10 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 
 ### Themes
 
-The same screen, in six of the 19 themes.
+Six of the 19 themes, on the same stick.
 
 <p align="center">
-<img src="docs/themes.jpg" alt="Six of the NoxPass themes: Dark, Light, Matrix, Amber, Violet and Dusk" width="760">
+<img src="docs/themes.jpg" alt="One M5Stick showing six NoxPass themes side by side: Dark, Light, Matrix, Amber, Violet and Dusk" width="760">
 </p>
 
 ## Buttons
