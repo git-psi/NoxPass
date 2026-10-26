@@ -1,8 +1,10 @@
 // WebApi.cpp : JSON content exchanged with the website, and application of the requested changes.
 #include "WebApi.h"
 #include "../core/Settings.h"
+#include "../vault/Presets.h"
 #include <ArduinoJson.h>
 #include <string.h>
+#include <algorithm>
 #include <stdio.h>
 
 namespace WebApi {
@@ -88,7 +90,11 @@ std::string vaultTail() {
     s += "\"";
     s += ",\"brightness\":" + num(v.brightness);
     s += ",\"autoLock\":" + num(v.autoLock);
-    s += "},\"limits\":{\"title\":" + num(Vault::MAX_TITLE)
+    s += "},\"presets\":[";
+    Presets::load();
+    for (size_t i = 0; i < Presets::count(); i++) { if (i) s += ','; s += jsonString(Presets::at(i)); }
+    s += "],\"limits\":{\"title\":" + num(Vault::MAX_TITLE)
+       + ",\"presets\":" + num(Presets::MAX_COUNT)
        + ",\"label\":" + num(Vault::MAX_LABEL)
        + ",\"value\":" + num(Vault::MAX_VALUE)
        + ",\"fields\":" + num(Vault::MAX_FIELDS)
@@ -147,6 +153,21 @@ bool apply(const char* body, size_t len, std::string& error, int& count) {
         settingsChanged = differ(sv, Settings::get());
     }
 
+    // Presets (saved usernames): the whole list, validated BEFORE touching the vault.
+    std::vector<std::string> pv;
+    bool presetsChanged = false;
+    if (doc["presets"].is<JsonArrayConst>()) {
+        for (JsonVariantConst x : doc["presets"].as<JsonArrayConst>()) {
+            const std::string t = x.is<const char*>() ? x.as<const char*>() : "";
+            if (!Presets::valid(t)) { error = "Bad preset: 1 to 128 plain characters"; return false; }
+            if (std::find(pv.begin(), pv.end(), t) == pv.end()) pv.push_back(t);
+        }
+        if (pv.size() > Presets::MAX_COUNT) { error = "Too many presets"; return false; }
+        Presets::load();
+        presetsChanged = pv.size() != Presets::count();
+        for (size_t i = 0; i < pv.size() && !presetsChanged; i++) presetsChanged = pv[i] != Presets::at(i);
+    }
+
     // 2) Vault: all or nothing.
     JsonArrayConst ops = doc["ops"];
     if (ops.size() > MAX_OPS) { error = "Too many changes at once"; return false; }
@@ -183,7 +204,11 @@ bool apply(const char* body, size_t len, std::string& error, int& count) {
         }
     }
 
-    // 3) Settings applied afterwards (the vault is already saved).
+    // 3) Presets, then settings (the vault is already saved).
+    if (presetsChanged) {
+        if (!Presets::set(pv)) { error = "Presets not saved"; count = n; return false; }
+        n++;
+    }
     if (settingsChanged) {
         if (!Settings::set(sv)) { error = "Settings not saved"; count = n; return false; }
         n++;

@@ -19,6 +19,8 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 - **Two buttons, one hand**: every screen is driven by button A and button B only.
 - **Bridge**: the stick opens its own Wi-Fi (QR code to join it) and serves a web page to manage your
   entries from a phone or a computer. A new device has to be accepted on the stick first.
+- **Username presets**: save your usual usernames and emails from the website. When you create an entry
+  on the stick, they are offered first, then the characters. They are stored encrypted too.
 - **Entry types**: username / email, password, URL, card number, expiry, CVV, note, free text and
   secret.
 - **Settings**: 36 two-color themes, brightness, PIN visible or hidden, shuffled PIN wheel, auto-lock,

@@ -5,6 +5,7 @@
 #include "../ui/Theme.h"
 #include "../ui/Fonts.h"
 #include "../vault/Vault.h"
+#include "../vault/Presets.h"
 #include "../security/Crypto.h"
 #include "../config.h"
 
@@ -73,10 +74,21 @@ void CreateScreen::onEnter() {
     text.clear(); title.clear(); username.clear();
     cur  = 0;
     size = Config::PASSWORD_DEFAULT_LEN;
+    Presets::load();
     invalidate();
 }
 
+size_t CreateScreen::presets() const {
+    return (stage == Stage::Username && text.empty()) ? Presets::count() : 0;
+}
+
 void CreateScreen::append() {
+    if (cur < presets()) {                              // A preset fills the whole text (it can still be edited)
+        text = Presets::at(cur);
+        cur = 0;
+        return;
+    }
+    const uint8_t ch = cur - presets();
     const size_t limit = (stage == Stage::Title) ? Vault::MAX_TITLE : Vault::MAX_VALUE;
     if (text.size() >= limit) {
         char m[24];
@@ -84,7 +96,7 @@ void CreateScreen::append() {
         Ui::showMessage(Ui::Msg::Error, m);
         return;
     }
-    text += ALPHABET[cur];
+    text += ALPHABET[ch];
     cur = 0;
 }
 
@@ -130,8 +142,8 @@ void CreateScreen::onInput(InputEvent e) {
     }
 
     switch (e) {
-        case InputEvent::AClick: cur = (cur + 1) % N_CHARS; break;
-        case InputEvent::BClick: cur = (cur + N_CHARS - 1) % N_CHARS; break;
+        case InputEvent::AClick: { const uint8_t n = presets() + N_CHARS; cur = (cur + 1) % n; break; }
+        case InputEvent::BClick: { const uint8_t n = presets() + N_CHARS; cur = (cur + n - 1) % n; break; }
         case InputEvent::ALong:  append(); break;
         case InputEvent::BLong:
             if (text.empty()) { ScreenManager::go(ScreenId::List); return; }       // Cancels the creation
@@ -162,17 +174,27 @@ void CreateScreen::draw(M5Canvas& c) {
     } else {
         // Already validated text: only the last characters fit, preceded by ".." if needed
         const int perLine = max(1, TEXT_W / max(1, (int)c.textWidth("W")));
-        std::string shown = text;
+        const size_t P = presets();
+        const bool onPreset = cur < P;                  // A preset is selected: previewed in the middle
+        std::string shown = onPreset ? Presets::at(cur) : text;
+        if (onPreset) c.setTextColor(Theme::mid, Theme::bg);
         if ((int)shown.size() > perLine) shown = ".." + shown.substr(shown.size() - (perLine - 2));
         c.drawString(shown.c_str(), cx, 67);
+        c.setTextColor(Theme::fg, Theme::bg);
 
         // Row of 5: next on the right, previous on the left, more and more faded
         const int rowY = 107, rowDx = 20;
         const uint16_t colors[5] = { Theme::dim, Theme::mid, Theme::fg, Theme::mid, Theme::dim };
         for (int k = 0; k < 5; k++) {
             const int d = k - 2;
-            const uint8_t idx = (cur + N_CHARS * 2 + d) % N_CHARS;
-            if (idx == SPACE_INDEX) {
+            const int total = (int)P + N_CHARS;
+            const int pos = (cur + total * 2 + d) % total;
+            const bool isPreset = pos < (int)P;
+            const uint8_t idx = isPreset ? 0 : pos - P;
+            if (isPreset) {
+                c.setTextColor(colors[k], Theme::bg);
+                c.drawString("@", cx + d * rowDx, rowY);        // A saved preset
+            } else if (idx == SPACE_INDEX) {
                 drawSpaceIcon(c, cx + d * rowDx, rowY, colors[k]);
             } else {
                 char s[2] = { ALPHABET[idx], 0 };

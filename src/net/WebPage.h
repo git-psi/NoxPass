@@ -191,7 +191,7 @@ var TYPES=[
  {n:4,name:'Card number',obf:1,lab:0},{n:5,name:'Expiry',obf:0,lab:0},{n:6,name:'CVV',obf:1,lab:0},
  {n:7,name:'Note',obf:0,lab:0},{n:8,name:'Text',obf:0,lab:1},{n:9,name:'Secret',obf:1,lab:1}];
 var T=function(n){return TYPES.filter(function(t){return t.n===n})[0]||TYPES[0]};
-var LIM={title:32,label:24,value:128,fields:16,entries:500};
+var LIM={title:32,label:24,value:128,fields:16,entries:500,presets:16};
 var SETTINGS=[
  {k:'theme',name:'Theme',hint:'Colors of the stick screen',type:'theme'},
  {k:'layout',name:'USB keyboard',hint:'Layout of the computer you type on',type:'select',opts:[['azerty','AZERTY'],['qwerty','QWERTY']]},
@@ -229,7 +229,7 @@ var mq=matchMedia('(max-width:760px)');
 var mobile=function(){return mq.matches};
 var bl=function(s){return new TextEncoder().encode(s).length};
 
-var saved={entries:[],settings:{theme:'dark',layout:'azerty',pinDigits:true,pinShuffle:false,offOnUnplug:false,sort:'recent',autoLock:60,brightness:100}};
+var saved={entries:[],presets:[],settings:{theme:'dark',layout:'azerty',pinDigits:true,pinShuffle:false,offOnUnplug:false,sort:'recent',autoLock:60,brightness:100}};
 var draft=clone(saved),sel=null,q='',uid=0,busy=false,loaded=false,flash='',flashT=0;
 var shown={};
 var cur=function(){return typeof sel==='number'?draft.entries.filter(function(e){return e.id===sel})[0]:null};
@@ -269,17 +269,21 @@ function status(e){
   return JSON.stringify(s)!==JSON.stringify(e)?'modified':'';
 }
 function fmt(d,v){if(d.type==='switch')return v?'On':'Off';if(d.type==='range')return v+'%';if(d.type==='theme')return TH(v).n;return d.opts.filter(function(o){return o[0]===String(v)})[0][1].split(' · ')[0]}
+function presetsDiff(){return JSON.stringify(saved.presets)!==JSON.stringify(draft.presets)}
 function settingsDiff(){return SETTINGS.filter(function(d){return String(saved.settings[d.k])!==String(draft.settings[d.k])})}
 function pending(){
   var p=[];
   draft.entries.forEach(function(e){var s=status(e);if(s)p.push({s:s,t:e.title||'(untitled)'})});
   settingsDiff().forEach(function(d){p.push({s:'setting',t:d.name+': '+fmt(d,saved.settings[d.k])+' to '+fmt(d,draft.settings[d.k])})});
+  if(presetsDiff())p.push({s:'setting',t:'Presets: '+saved.presets.length+' to '+draft.presets.length});
   return p;
 }
 /* Only plain ASCII (printable characters) is allowed: the stick types on a USB keyboard and cannot type anything else. */
 function nonAscii(v){var o=[],i;for(i=0;i<v.length;i++){var c=v.charAt(i),n=v.charCodeAt(i);if((n<32&&n!==10||n>126)&&o.indexOf(c)<0)o.push(c)}return o}
 function atxt(v){var u=nonAscii(v);return u.length?'Not allowed: '+u.join(' ')+'. Use plain characters only (letters, digits, standard symbols).':''}
 function problems(){
+  if(draft.presets.length>LIM.presets)return 'Too many presets (max '+LIM.presets+')';
+  for(var j=0;j<draft.presets.length;j++){var pr=draft.presets[j];if(bl(pr)>LIM.value)return 'A preset is too long: '+pr.slice(0,20);if(nonAscii(pr).length)return 'Preset '+pr.slice(0,20)+': plain characters only'}
   for(var i=0;i<draft.entries.length;i++){
     var e=draft.entries[i];if(e.deleted||!status(e))continue;
     var nm=e.title||'(untitled)';
@@ -307,14 +311,14 @@ function renderList(){
     return '<div class="item '+(e.id===sel?'sel':'')+' '+(e.deleted?'del':'')+'" data-id="'+e.id+'"><span>'+esc(e.title||'(untitled)')+'</span>'+(s?'<span class="badge">'+s+'</span>':'')+'</div>';
   }).join('')||(loaded?(q?'<p class="hint">No password matches "'+esc(q)+'".</p>':'<p class="hint">No password yet. Press + to add one.</p>'):'');
   $('#count').textContent=loaded?(q?items.length+' of '+draft.entries.length:draft.entries.length)+(draft.entries.length===1?' password':' passwords'):'';
-  $('#setrow').innerHTML='<div class="item '+(sel==='settings'?'sel':'')+'" data-id="settings"><span>Settings</span>'+(settingsDiff().length?'<span class="badge">modified</span>':'')+'</div>';
+  $('#setrow').innerHTML='<div class="item '+(sel==='settings'?'sel':'')+'" data-id="settings"><span>Settings</span>'+(settingsDiff().length?'<span class="badge">modified</span>':'')+'</div><div class="item '+(sel==='presets'?'sel':'')+'" data-id="presets" style="margin-top:6px"><span>Presets</span>'+(presetsDiff()?'<span class="badge">modified</span>':'')+'</div>';
 }
 function typeSelect(name,value,dis,cls){
   return '<div class="sel-wrap '+cls+'"><select class="in" data-k="'+name+'" '+dis+'>'+TYPES.map(function(t){return '<option value="'+t.n+'"'+(t.n===value?' selected':'')+'>'+t.name+'</option>'}).join('')+'</select></div>';
 }
 function renderPane(){
   var box=mobile()?$('#mpane'):$('#pane'),e=cur();
-  if(mobile()&&sel!=='settings'&&!e&&$('#pdlg').open)$('#pdlg').close();
+  if(mobile()&&sel!=='settings'&&sel!=='presets'&&!e&&$('#pdlg').open)$('#pdlg').close();
   if(sel==='settings'){
     $('#mtitle').textContent='Settings';
     box.innerHTML='<h2>Settings</h2>'+SETTINGS.map(function(d){
@@ -327,6 +331,13 @@ function renderPane(){
     }).join('')+'<div class="set"><div><b>Export</b><small>Shows every password as plain JSON text, to copy. Nothing is saved on this device.</small></div><button class="btn" data-act="export">Export</button></div>'
       +'<div class="set" style="border-bottom:0"><div><b>Import</b><small>Paste a JSON export. The entries are added to your vault.</small></div><button class="btn" data-act="import">Import</button></div>'
       +'<p class="hint">To change the PIN or reset the stick, use Settings on the stick itself.</p>';
+    return;
+  }
+  if(sel==='presets'){
+    $('#mtitle').textContent='Presets';
+    box.innerHTML='<h2>Presets</h2><div class="set" style="border-bottom:0"><div><b>Saved usernames and emails</b><small>One per line, up to '+LIM.presets+'. On the stick, they are offered first when you type a username.</small></div></div>'
+      +'<textarea class="in" data-pre="1" rows="8" spellcheck="false" autocomplete="off" style="width:100%;min-height:200px;resize:vertical;font-family:inherit">'+esc(draft.presets.join('\n'))+'</textarea>'
+      +'<div class="warn" id="prew"></div>';
     return;
   }
   if(!e){box.innerHTML=mobile()?'':'<p class="hint">Select a password on the left to see or edit it, or press + to create one.</p>';return}
@@ -385,7 +396,7 @@ function load(){
   return api('/api/vault').then(function(j){
     if(j.error)throw new Error(j.error);
     LIM=j.limits;if(j.themes&&j.themes.length)THEMES=j.themes;
-    saved={entries:j.entries.map(function(e){return {id:e.id,title:e.title}}),settings:j.settings};   /* titles only */
+    saved={entries:j.entries.map(function(e){return {id:e.id,title:e.title}}),presets:j.presets||[],settings:j.settings};   /* titles only */
     draft=clone(saved);sel=null;shown={};loaded=true;
     renderAll();
   });
@@ -427,6 +438,7 @@ function buildBody(){
   });
   var body={ops:ops};
   if(settingsDiff().length)body.settings=draft.settings;
+  if(presetsDiff())body.presets=draft.presets;
   return body;
 }
 function send(){
@@ -455,7 +467,7 @@ document.addEventListener('click',function(ev){
     if(ddOpen&&!t.closest('.dd')){ddOpen=false;renderPane()}
   }
   var b=t.closest('[data-act],[data-id]');if(!b||busy||b.closest('#dlg')||b.closest('#xdlg')||b.closest('#gdlg'))return;
-  if(b.dataset.id){sel=b.dataset.id==='settings'?'settings':+b.dataset.id;shown={};ddOpen=false;renderList();ensure(sel);renderPane();return openModal()}
+  if(b.dataset.id){sel=(b.dataset.id==='settings'||b.dataset.id==='presets')?b.dataset.id:+b.dataset.id;shown={};ddOpen=false;renderList();ensure(sel);renderPane();return openModal()}
   var i=+b.dataset.i,e=cur();
   switch(b.dataset.act){
     case 'export':return startExport();
@@ -494,6 +506,9 @@ mq.addEventListener('change',function(){if($('#pdlg').open)$('#pdlg').close();re
 document.addEventListener('input',function(ev){
   var t=ev.target;
   if(t.id==='q'){q=t.value;return renderList()}
+  if(t.dataset.pre){
+    var seen={};draft.presets=t.value.split('\n').map(function(x){return x.trim()}).filter(function(x){if(!x||seen[x])return false;seen[x]=1;return true});
+    $('#prew').textContent=problems();renderList();return renderBar()}
   if(t.dataset.s){draft.settings[t.dataset.s]=t.type==='checkbox'?t.checked:(t.dataset.s==='autoLock'||t.dataset.s==='brightness'?+t.value:t.value);if(t.type==='range'&&t.nextSibling)t.nextSibling.textContent=t.value+'%';renderList();return renderBar()}
   var k=t.dataset.k,e=cur();if(!k||!e)return;
   var p=k.split(':'),name=p[0],i=+p[1];

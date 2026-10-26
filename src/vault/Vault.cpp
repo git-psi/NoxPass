@@ -1,5 +1,6 @@
 // Vault.cpp : the vault (read, atomic write, sorted list, usage counters).
 #include "Vault.h"
+#include "Presets.h"
 #include "../security/Auth.h"
 #include "../security/Crypto.h"
 #include "../storage/Storage.h"
@@ -488,6 +489,7 @@ void clear() {
     std::vector<uint16_t>().swap(order);
     counter = 0;
     selectedId = 0;
+    Presets::clear();                          // Saved usernames too (lock)
 }
 
 LoadResult load() {
