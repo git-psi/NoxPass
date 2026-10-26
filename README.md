@@ -130,6 +130,5 @@ MIT
 ---
 
 <p align="center">
-Made with ❤️ · designed by <a href="https://github.com/git-psi">git-psi</a>, coded by us with
-<a href="https://claude.com/claude-code">Claude</a>, and fully reviewed by me.
+*Designed by me, coded by Claude and me, and fully reviewed by me.* 🦉
 </p>
