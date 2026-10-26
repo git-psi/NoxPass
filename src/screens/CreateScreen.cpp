@@ -148,6 +148,7 @@ void CreateScreen::onInput(InputEvent e) {
         case InputEvent::BLong:
             if (text.empty()) { ScreenManager::go(ScreenId::List); return; }       // Cancels the creation
             text.erase(text.size() - 1);
+            if (text.empty()) cur = 0;                                             // Back to the first preset / character
             break;
         case InputEvent::AB:     advance(text.empty()); break;                     // Empty: "Temp"
         default: return;

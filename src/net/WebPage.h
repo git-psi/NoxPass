@@ -13,6 +13,10 @@ static const char INDEX_HTML[] PROGMEM = R"HTML(<!doctype html>
 :root{--bg:#000;--fg:#fff;--mid:#8c8c8c;--dim:#2e2e2e;--r:6px}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);overflow:hidden}
+*{scrollbar-width:thin;scrollbar-color:var(--fg) var(--bg)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--fg);border:2px solid var(--bg);border-radius:var(--r)}
 body{color:var(--fg);font:14px/1.3 "Courier New",Courier,monospace;overflow:hidden}
 button,input,select{font-family:inherit}
 .mid{color:var(--mid)}
@@ -22,7 +26,7 @@ h1{flex:none;display:flex;align-items:center;justify-content:center;gap:12px;fon
 .frame{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.15fr;grid-template-rows:minmax(0,1fr);border-top:2px solid var(--fg)}
 aside{border-right:2px solid var(--fg);padding:18px 20px 12px 0;display:flex;flex-direction:column;min-height:0}
 #list{flex:1;overflow:auto;margin-top:12px}
-section{padding:18px 0 12px 24px;overflow:auto;min-height:0}
+section{padding:18px 20px 12px 24px;overflow:auto;min-height:0}
 .rule{flex:none;height:2px;background:var(--fg)}
 .rule.busy{background:var(--dim)}
 .rule i{display:block;height:100%;width:0;background:var(--fg);transition:width .5s}
@@ -275,7 +279,7 @@ function pending(){
   var p=[];
   draft.entries.forEach(function(e){var s=status(e);if(s)p.push({s:s,t:e.title||'(untitled)'})});
   settingsDiff().forEach(function(d){p.push({s:'setting',t:d.name+': '+fmt(d,saved.settings[d.k])+' to '+fmt(d,draft.settings[d.k])})});
-  if(presetsDiff())p.push({s:'setting',t:'Presets: '+saved.presets.length+' to '+draft.presets.length});
+  if(presetsDiff())p.push({s:'setting',t:'Username/Email presets: '+saved.presets.length+' to '+draft.presets.length});
   return p;
 }
 /* Only plain ASCII (printable characters) is allowed: the stick types on a USB keyboard and cannot type anything else. */
@@ -283,7 +287,7 @@ function nonAscii(v){var o=[],i;for(i=0;i<v.length;i++){var c=v.charAt(i),n=v.ch
 function atxt(v){var u=nonAscii(v);return u.length?'Not allowed: '+u.join(' ')+'. Use plain characters only (letters, digits, standard symbols).':''}
 function problems(){
   if(draft.presets.length>LIM.presets)return 'Too many presets (max '+LIM.presets+')';
-  for(var j=0;j<draft.presets.length;j++){var pr=draft.presets[j];if(bl(pr)>LIM.value)return 'A preset is too long: '+pr.slice(0,20);if(nonAscii(pr).length)return 'Preset '+pr.slice(0,20)+': plain characters only'}
+  for(var j=0;j<draft.presets.length;j++){var pr=draft.presets[j];if(bl(pr)>LIM.value)return 'A username/email preset is too long: '+pr.slice(0,20);if(nonAscii(pr).length)return 'Username/email preset '+pr.slice(0,20)+': plain characters only'}
   for(var i=0;i<draft.entries.length;i++){
     var e=draft.entries[i];if(e.deleted||!status(e))continue;
     var nm=e.title||'(untitled)';
@@ -311,7 +315,7 @@ function renderList(){
     return '<div class="item '+(e.id===sel?'sel':'')+' '+(e.deleted?'del':'')+'" data-id="'+e.id+'"><span>'+esc(e.title||'(untitled)')+'</span>'+(s?'<span class="badge">'+s+'</span>':'')+'</div>';
   }).join('')||(loaded?(q?'<p class="hint">No password matches "'+esc(q)+'".</p>':'<p class="hint">No password yet. Press + to add one.</p>'):'');
   $('#count').textContent=loaded?(q?items.length+' of '+draft.entries.length:draft.entries.length)+(draft.entries.length===1?' password':' passwords'):'';
-  $('#setrow').innerHTML='<div class="item '+(sel==='settings'?'sel':'')+'" data-id="settings"><span>Settings</span>'+(settingsDiff().length?'<span class="badge">modified</span>':'')+'</div><div class="item '+(sel==='presets'?'sel':'')+'" data-id="presets" style="margin-top:6px"><span>Presets</span>'+(presetsDiff()?'<span class="badge">modified</span>':'')+'</div>';
+  $('#setrow').innerHTML='<div class="item '+(sel==='settings'?'sel':'')+'" data-id="settings"><span>Settings</span>'+(settingsDiff().length?'<span class="badge">modified</span>':'')+'</div><div class="item '+(sel==='presets'?'sel':'')+'" data-id="presets" style="margin-top:6px"><span>Username/Email presets</span>'+(presetsDiff()?'<span class="badge">modified</span>':'')+'</div>';
 }
 function typeSelect(name,value,dis,cls){
   return '<div class="sel-wrap '+cls+'"><select class="in" data-k="'+name+'" '+dis+'>'+TYPES.map(function(t){return '<option value="'+t.n+'"'+(t.n===value?' selected':'')+'>'+t.name+'</option>'}).join('')+'</select></div>';
@@ -334,9 +338,9 @@ function renderPane(){
     return;
   }
   if(sel==='presets'){
-    $('#mtitle').textContent='Presets';
-    box.innerHTML='<h2>Presets</h2><div class="set" style="border-bottom:0"><div><b>Saved usernames and emails</b><small>One per line, up to '+LIM.presets+'. On the stick, they are offered first when you type a username.</small></div></div>'
-      +'<textarea class="in" data-pre="1" rows="8" spellcheck="false" autocomplete="off" style="width:100%;min-height:200px;resize:vertical;font-family:inherit">'+esc(draft.presets.join('\n'))+'</textarea>'
+    $('#mtitle').textContent='Username/Email presets';
+    box.innerHTML='<h2>Username/Email presets</h2><div class="set" style="border-bottom:0"><div><b>Saved usernames and emails</b><small>One per line, up to '+LIM.presets+'. On the stick, they are offered first when you type a username or email.</small></div></div>'
+      +'<textarea class="in" data-pre="1" rows="10" spellcheck="false" autocomplete="off" style="width:100%;height:260px;padding:10px 12px;line-height:1.5;resize:none;font-family:inherit">'+esc(draft.presets.join('\n'))+'</textarea>'
       +'<div class="warn" id="prew"></div>';
     return;
   }

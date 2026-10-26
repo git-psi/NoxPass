@@ -159,10 +159,10 @@ bool apply(const char* body, size_t len, std::string& error, int& count) {
     if (doc["presets"].is<JsonArrayConst>()) {
         for (JsonVariantConst x : doc["presets"].as<JsonArrayConst>()) {
             const std::string t = x.is<const char*>() ? x.as<const char*>() : "";
-            if (!Presets::valid(t)) { error = "Bad preset: 1 to 128 plain characters"; return false; }
+            if (!Presets::valid(t)) { error = "Bad username/email preset: 1 to 128 plain characters"; return false; }
             if (std::find(pv.begin(), pv.end(), t) == pv.end()) pv.push_back(t);
         }
-        if (pv.size() > Presets::MAX_COUNT) { error = "Too many presets"; return false; }
+        if (pv.size() > Presets::MAX_COUNT) { error = "Too many username/email presets"; return false; }
         Presets::load();
         presetsChanged = pv.size() != Presets::count();
         for (size_t i = 0; i < pv.size() && !presetsChanged; i++) presetsChanged = pv[i] != Presets::at(i);
@@ -206,7 +206,7 @@ bool apply(const char* body, size_t len, std::string& error, int& count) {
 
     // 3) Presets, then settings (the vault is already saved).
     if (presetsChanged) {
-        if (!Presets::set(pv)) { error = "Presets not saved"; count = n; return false; }
+        if (!Presets::set(pv)) { error = "Username/email presets not saved"; count = n; return false; }
         n++;
     }
     if (settingsChanged) {

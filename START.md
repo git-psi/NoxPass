@@ -116,7 +116,7 @@ the **Password size**. The password itself is generated for you, random and stro
 For the title and the username, you pick characters one by one with **A** and **B**, **hold A** to add
 the character and **hold B** to erase one. **A + B** validates the step.
 
-- If you saved presets on the website (see below), they are offered first when you start the username.
+- If you saved username or email presets on the website (see below), they are offered first when you start the username/email.
 - Validate an empty text with **A + B** and the stick gives it a temporary name (`Temp123`). You can
   rename it later from the website.
 - For the size, **A** and **B** change the number, then **A + B** creates the password.
@@ -141,7 +141,7 @@ On the page you can:
 
 - add, edit and delete passwords, with all the field types (card number, notes, secrets...)
 - generate strong passwords
-- save **presets**: usernames and emails you use often
+- save **username / email presets**: the ones you use often, offered first when you create an entry on the stick
 - change the theme, brightness, keyboard layout, and the other settings
 - export or import your passwords from the settings of the page
 
