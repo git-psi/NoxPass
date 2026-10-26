@@ -1,5 +1,6 @@
 // Hid.cpp : USB keyboard. Translates each character into a key (AZERTY or QWERTY) and "types" it on the computer.
 #include "Hid.h"
+#include "../config.h"
 #include <string.h>
 #include <Arduino.h>
 #include "USB.h"
