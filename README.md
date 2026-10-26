@@ -14,6 +14,8 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 
 **New here? Read the [quick start guide](START.md).**
 
+**Flash it without PlatformIO: [NoxPass on M5Burner](M5BURNER_LINK_HERE)** *(link coming soon)*
+
 ## What's inside
 
 - **Encrypted vault**: AES-256-GCM, with a random master key protected by a key derived from your PIN
@@ -85,6 +87,10 @@ PIN -> (PBKDF2 + salt) -> KEK -> decrypts -> master key -> decrypts -> vault
 > This is a personal project that has not been audited. Use it knowing that.
 
 ## Build and flash
+
+**Easiest way:** flash NoxPass from [M5Burner](M5BURNER_LINK_HERE) *(link coming soon)*, no PlatformIO needed.
+
+**From the source:**
 
 You need [PlatformIO](https://platformio.org) and an **M5StickS3**.
 
