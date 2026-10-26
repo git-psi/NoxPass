@@ -87,6 +87,8 @@ namespace Hid {
 
     void begin() {
         keyboard.begin();
+        USB.productName(Config::USB_PRODUCT);        // Names the computer shows for the stick
+        USB.manufacturerName(Config::USB_MANUFACTURER);
         USB.begin();
     }
 

@@ -27,6 +27,8 @@ namespace Config {
     constexpr uint32_t PBKDF2_ITERATIONS = 20000;
 
     // ---- DEFAULT settings (the user changes them later from the stick or the website) ---------------
+    constexpr const char* USB_PRODUCT      = "NoxPass";   // Name of the USB keyboard on the computer
+    constexpr const char* USB_MANUFACTURER = "NoxPass";
     constexpr bool     HID_QWERTY         = true;   // Computer keyboard: false = AZERTY, true = QWERTY
     constexpr bool     PIN_SHOW_DIGITS    = true;   // false => '*' for validated digits
     constexpr uint16_t AUTOLOCK_DEFAULT_S = 60;     // Auto-lock after inactivity (0 = never)
