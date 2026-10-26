@@ -3,7 +3,7 @@
 <source media="(prefers-color-scheme: dark)" srcset="docs/logo-light-text.png">
 <img src="docs/logo-dark-text.png" alt="" height="130" align="middle">
 </picture>
-&nbsp;NoxPass
+&nbsp;&nbsp;&nbsp;&nbsp;NoxPass
 </h1>
 
 **An offline password manager for the M5StickS3: encrypted vault, typed over USB, nothing in the cloud.**
