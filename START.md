@@ -63,7 +63,7 @@ The PIN screen shows a small dial at the bottom, with the digits around the curr
 - **Hold B**: erase the last digit
 - **A + B**: validate the whole PIN
 
-Your PIN must have **6 to 12 digits**. The longer, the better: it is the only thing protecting your
+Your PIN must have **6 to 20 digits**. The longer, the better: it is the only thing protecting your
 passwords if someone gets hold of the stick.
 
 ### ⚠️ Please do not forget your PIN

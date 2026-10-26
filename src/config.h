@@ -20,7 +20,7 @@ namespace Config {
 
     // ---- PIN ------------------------------------------------------------------------------------
     constexpr uint8_t  PIN_MIN         = 6;
-    constexpr uint8_t  PIN_MAX         = 12;
+    constexpr uint8_t  PIN_MAX         = 20;
 
     // PBKDF2 cost (iterations): it slows down PIN guesses if the flash is copied.
     // Higher = safer but slower unlock (target: about 1 s on the ESP32-S3).

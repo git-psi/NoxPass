@@ -78,7 +78,7 @@ PIN -> (PBKDF2 + salt) -> KEK -> decrypts -> master key -> decrypts -> vault
 - The PIN and the KEK are **never stored**. A correct PIN is a valid GCM tag on the master key.
 - Changing the PIN re-encrypts the same master key with a new salt. The vault is not touched.
 - Everything is decrypted in RAM only, and wiped when the stick locks.
-- The PIN has 6 to 12 digits. If someone copies the flash, only the PBKDF2 cost slows down offline
+- The PIN has 6 to 20 digits. If someone copies the flash, only the PBKDF2 cost slows down offline
   guesses, so **a longer PIN is your best protection**.
 - Holding `A + B` for 10 seconds on the login screen erases everything (factory reset).
 
