@@ -1,5 +1,5 @@
 <p align="center">
-<img src="docs/splash.jpg" alt="NoxPass splash screen on an M5StickS3: the owl logo and the name" width="900">
+<img src="docs/logo.jpg" alt="NoxPass: the owl logo and the name" width="520">
 </p>
 
 # NoxPass
@@ -35,6 +35,9 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 <br>
 
 <table>
+<tr>
+<td align="center" colspan="2"><img src="docs/splash.jpg" alt="NoxPass splash screen" width="420"><br><sub>Splash screen</sub></td>
+</tr>
 <tr>
 <td align="center"><img src="docs/pin.jpg" alt="PIN screen" width="420"><br><sub>PIN dial</sub></td>
 <td align="center"><img src="docs/list.jpg" alt="Password list" width="420"><br><sub>Password list</sub></td>
