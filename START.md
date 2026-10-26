@@ -64,7 +64,7 @@ Each time you switch the stick on, type your PIN the same way, then validate wit
 ## 4. Moving around
 
 After the PIN you land on your **list of passwords**. The most recently used ones are at the top, and
-the first line is always **+ Add Password**.
+the first line is always **"+ Add Password"**.
 
 - **A**: go down
 - **B**: go up
