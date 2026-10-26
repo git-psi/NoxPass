@@ -1,7 +1,7 @@
 <h1 align="center">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="docs/logo-light-text.png">
-<img src="docs/logo-dark-text.png" alt="" height="64" align="middle">
+<img src="docs/logo-dark-text.png" alt="" height="130" align="middle">
 </picture>
 &nbsp;NoxPass
 </h1>
