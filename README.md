@@ -27,7 +27,7 @@ it, unless you decide to manage them from your phone or PC through the stick's o
   secret.
 - **Settings**: 19 two-color themes, brightness, PIN visible or hidden, shuffled PIN wheel, auto-lock,
   sort by recent use or alphabetically, power off when unplugged.
-- **Minimal look**: two colors, like a Flipper Zero screen. A small owl is the logo.
+- **Minimal look**: two colors, a simple logo.
 
 <details>
 <summary><b>Screenshots</b></summary>
