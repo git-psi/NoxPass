@@ -1,14 +1,10 @@
-<table align="center">
-<tr>
-<td>
+<h1 align="center">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="docs/logo-light-text.png">
-<img src="docs/logo-dark-text.png" alt="NoxPass owl logo" width="110">
+<img src="docs/logo-dark-text.png" alt="" height="64" align="middle">
 </picture>
-</td>
-<td><h1>NoxPass</h1></td>
-</tr>
-</table>
+&nbsp;NoxPass
+</h1>
 
 **An offline password manager for the M5StickS3: encrypted vault, typed over USB, nothing in the cloud.**
 
