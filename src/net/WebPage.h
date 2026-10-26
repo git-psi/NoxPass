@@ -233,7 +233,7 @@ var mq=matchMedia('(max-width:760px)');
 var mobile=function(){return mq.matches};
 var bl=function(s){return new TextEncoder().encode(s).length};
 
-var saved={entries:[],presets:[],settings:{theme:'dark',layout:'azerty',pinDigits:true,pinShuffle:false,offOnUnplug:false,sort:'recent',autoLock:60,brightness:100}};
+var saved={entries:[],presets:[],settings:{theme:'dark',layout:'qwerty',pinDigits:true,pinShuffle:false,offOnUnplug:false,sort:'recent',autoLock:60,brightness:100}};
 var draft=clone(saved),sel=null,q='',uid=0,busy=false,loaded=false,flash='',flashT=0;
 var shown={};
 var cur=function(){return typeof sel==='number'?draft.entries.filter(function(e){return e.id===sel})[0]:null};

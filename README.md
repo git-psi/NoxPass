@@ -1,3 +1,7 @@
+<p align="center">
+<img src="docs/splash.jpg" alt="NoxPass splash screen on an M5StickS3: the owl logo and the name" width="900">
+</p>
+
 # NoxPass
 
 **An offline password manager for the M5StickS3: encrypted vault, typed over USB, nothing in the cloud.**
@@ -6,17 +10,13 @@ Plug the stick into any computer, enter your PIN on its two buttons, pick an ent
 the login or password for you, like a keyboard. Your secrets live encrypted on the stick and never leave
 it, unless you decide to manage them from your phone or PC through the stick's own Wi-Fi.
 
-<p align="center">
-<img src="docs/device.jpg" alt="NoxPass running on an M5StickS3" width="640">
-</p>
-
 **New here? Read the [quick start guide](START.md).**
 
 ## What's inside
 
 - **Encrypted vault**: AES-256-GCM, with a random master key protected by a key derived from your PIN
   (PBKDF2-SHA256). The PIN itself is never stored.
-- **USB keyboard**: the stick types a field for you (AZERTY or QWERTY), whether the field is hidden
+- **USB keyboard**: the stick types a field for you (QWERTY by default, AZERTY in the settings), whether the field is hidden
   or not.
 - **Two buttons, one hand**: every screen is driven by button A and button B only.
 - **Bridge**: the stick opens its own Wi-Fi (QR code to join it) and serves a web page to manage your
@@ -28,6 +28,19 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 - **Settings**: 19 two-color themes, brightness, PIN visible or hidden, shuffled PIN wheel, auto-lock,
   sort by recent use or alphabetically, power off when unplugged.
 - **Minimal look**: two colors, like a Flipper Zero screen. A small owl is the logo.
+
+### Screens
+
+<table>
+<tr>
+<td align="center"><img src="docs/pin.jpg" alt="PIN screen" width="420"><br><sub>PIN dial</sub></td>
+<td align="center"><img src="docs/list.jpg" alt="Password list" width="420"><br><sub>Password list</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/entry.jpg" alt="Entry screen" width="420"><br><sub>An entry</sub></td>
+<td align="center"><img src="docs/bridge.jpg" alt="Bridge screen with Wi-Fi QR code" width="420"><br><sub>Bridge: Wi-Fi QR code</sub></td>
+</tr>
+</table>
 
 ### Themes
 

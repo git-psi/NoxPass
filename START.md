@@ -123,8 +123,8 @@ The stick behaves like a USB keyboard.
 2. Click in the login or password box on your screen.
 3. On the stick, select the field and press **A + B**. It types it for you.
 
-If the characters come out wrong (for example `q` instead of `a`), change **USB keyboard** between
-AZERTY and QWERTY in the settings: it has to match the keyboard of the computer you type on.
+The stick types as a QWERTY keyboard by default. If the characters come out wrong (for example `q`
+instead of `a`), change **USB keyboard** to AZERTY in the settings: it has to match the keyboard of the computer you type on.
 
 ---
 
@@ -177,7 +177,7 @@ Press **B** on the stick to disconnect, or **hold B** to leave the Bridge.
 From the menu, choose **Settings**. **A** / **B** to move, **hold A** to change a setting.
 
 - **Theme**: the colors of the screen. You see them live while you browse.
-- **USB keyboard**: AZERTY or QWERTY.
+- **USB keyboard**: QWERTY (default) or AZERTY.
 - **Show PIN digits**: show the digits you have typed, or hide them behind `*`.
 - **Brightness**.
 - **Auto-lock**: locks the vault after a while without any button press.
