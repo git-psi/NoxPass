@@ -47,7 +47,7 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 </tr>
 <tr>
 <td align="center"><img src="docs/bridge.jpg" alt="Bridge screen with Wi-Fi QR code" width="420"><br><sub>Bridge: Wi-Fi QR code</sub></td>
-<td align="center"><img src="docs/themes.jpg" alt="One M5Stick cut into three themes: Dark, Light and Dusk" width="420"><br><sub>Three of the 19 themes, on one stick</sub></td>
+<td align="center"><img src="docs/themes-cut.jpg" alt="One M5Stick cut into three themes: Dark, Light and Dusk" width="420"><br><sub>Three of the 19 themes, on one stick</sub></td>
 </tr>
 </table>
 
