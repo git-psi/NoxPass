@@ -73,7 +73,7 @@ the first line is always **"+ Add Password"**.
 
 ### The menu
 
-A row of squares: **P**assword, **B**ridge, **S**ettings, **Q**uit.
+A row of squares: **"P"**assword, **"B"**ridge, **"S"**ettings, **"Q"**uit.
 
 - **A** / **B**: move between them
 - **Hold A**: open the one that is selected
@@ -107,18 +107,18 @@ AZERTY and QWERTY in the settings: it has to match the keyboard of the computer 
 
 ## 6. Adding a password from the stick
 
-Choose **+ Add Password** in the list. It asks, in order, for a **Title**, a **Username/Email**, and
+Choose **"+ Add Password"** in the list. It asks, in order, for a **Title**, a **Username/Email**, and
 the **Password size**. The password itself is generated for you, random and strong.
 
 For the title and the username, you pick characters one by one with **A** and **B**, **hold A** to add
 the character and **hold B** to erase one. **A + B** validates the step.
 
 - If you saved username or email presets on the website (see below), they are offered first when you start the username/email.
-- Validate an empty text with **A + B** and the stick gives it a temporary name (`Temp123`). You can
+- Validate an empty text with **A + B** and the stick gives it a temporary name (ex: `Temp123`). You can
   rename it later from the website.
 - For the size, **A** and **B** change the number, then **A + B** creates the password.
 
-Honestly, typing on two buttons is slow. It works, but the website is much more comfortable.
+Honestly, typing on two buttons is slow. It works, but the website is much more comfortable. (Or if you type on the stick, dont forget to use preset !)
 
 ---
 
@@ -132,7 +132,7 @@ through the internet: the stick creates its own Wi-Fi network, for you only.
 3. Scan the QR code with your phone, or join the Wi-Fi by hand.
 4. The page opens by itself. If it does not, open a browser and go to **http://192.168.4.1**.
 5. The stick asks if it can trust your device: **A** accepts, **B** refuses.
-6. That is it. You are connected, and one device can be connected at a time.
+6. That is it. You are connected, and only one device can be connected at a time.
 
 On the page you can:
 
@@ -192,4 +192,4 @@ the passwords that really matter to you.
 Thank you for reading, and enjoy NoxPass! If something is unclear or broken, you can open an issue on
 the [GitHub page](https://github.com/git-psi/NoxPass).
 
-*Designed by git-psi, coded by us, and fully reviewed by me.* 🦉
+*Designed by me, coded by Claude and me, and fully reviewed by me.* 🦉
