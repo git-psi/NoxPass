@@ -58,10 +58,7 @@ Write it down somewhere safe, or pick something you will remember.
 ## 3. Unlocking
 
 Each time you switch the stick on, type your PIN the same way, then validate with **A + B**.
-
-- Wrong PIN? You get a short message and you can simply try again.
-- If you do nothing on this screen for about ten seconds, the stick switches itself off.
-
+> Wrong PIN? You get a short message and you can simply try again.
 ---
 
 ## 4. Moving around
