@@ -109,6 +109,7 @@ how the secrets are protected. That document is kept here as it was written, wit
 
 The final firmware follows them closely, but may differ in places: the code came after, and it has
 the last word.
+Pictures of the idea:
 
 <table>
 <tr>
