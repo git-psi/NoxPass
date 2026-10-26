@@ -44,7 +44,7 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 <td align="center"><img src="docs/bridge.jpg" alt="Bridge screen with Wi-Fi QR code" width="420"><br><sub>Bridge: Wi-Fi QR code</sub></td>
 </tr>
 <tr>
-<td align="center" colspan="2"><img src="docs/themes.jpg" alt="One M5Stick whose screen is cut into three NoxPass themes: Dark, Light and Dusk" width="420"><br><sub>Three of the 19 themes, on the same stick</sub></td>
+<td align="center" colspan="2"><img src="docs/themes.jpg" alt="One M5Stick whose screen is cut into three NoxPass themes: Dark, Light and Dusk" width="420"><br><sub>Themes</sub></td>
 </tr>
 </table>
 
