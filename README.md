@@ -121,7 +121,7 @@ Pictures of the idea:
 
 ## License
 
-MIT (`LICENSE`).
+MIT
 
 ---
 
