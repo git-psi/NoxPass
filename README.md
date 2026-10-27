@@ -14,7 +14,7 @@ it, unless you decide to manage them from your phone or PC through the stick's o
 
 **New here? Read the [quick start guide](START.md).**
 
-**Flash it without PlatformIO: [NoxPass on M5Burner](M5BURNER_LINK_HERE)** *(link coming soon)*
+**Flash it without PlatformIO: [NoxPass on M5Burner](https://burner.m5stack.com/D4FTWN)**
 
 ## What's inside
 
