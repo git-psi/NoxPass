@@ -88,7 +88,7 @@ PIN -> (PBKDF2 + salt) -> KEK -> decrypts -> master key -> decrypts -> vault
 
 ## Build and flash
 
-**Easiest way:** flash NoxPass from [M5Burner](M5BURNER_LINK_HERE) *(link coming soon)*, no PlatformIO needed.
+**Easiest way:** flash NoxPass from [M5Burner](https://burner.m5stack.com/D4FTWN), no PlatformIO needed.
 
 **From the source:**
 
